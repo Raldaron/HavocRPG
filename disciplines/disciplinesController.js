@@ -1,8 +1,8 @@
 var app = angular.module("site");
 
 app.controller("DisciplinesController",
- ['$scope', 'ClanService', 'DisciplineService',
- function($scope, ClanService, DisciplineService){
+ ['$scope', 'raceService', 'DisciplineService',
+ function($scope, raceService, DisciplineService){
 
    $scope.$on('$routeChangeSuccess', initScope);
 
@@ -10,7 +10,7 @@ app.controller("DisciplinesController",
    function initScope(){
      if(!DisciplineService.loadedCharacter){
        DisciplineService.resetDisciplines();
-       self.selectedClanDisciplines = self.getDisciplines();
+       self.selectedraceDisciplines = self.getDisciplines();
      }
    }
 
@@ -50,9 +50,9 @@ app.controller("DisciplinesController",
     DisciplineService.changeDiscipline(discipline, index, prevDisc);
   };
 
-  this.selectedClanDisciplines = getDisciplines();
+  this.selectedraceDisciplines = getDisciplines();
   function getDisciplines(){
-    return DisciplineService.selectedClanDisciplines;
+    return DisciplineService.selectedraceDisciplines;
   };
 
   this.getDisciplinePts = getDisciplinePts;
@@ -72,7 +72,7 @@ app.controller("DisciplinesController",
 
   $scope.$on('loadCharacter', function(){
     DisciplineService.loadedCharacter = true;
-    self.selectedClanDisciplines = self.getDisciplines();
+    self.selectedraceDisciplines = self.getDisciplines();
     $scope.$apply();
   })
 

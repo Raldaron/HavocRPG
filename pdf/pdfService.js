@@ -1,9 +1,9 @@
 var app = angular.module("site");
 app.service('PdfService',
-['$http', 'CharCreatorService', 'ClanService', 'AttributesService',
+['$http', 'CharCreatorService', 'raceService', 'AttributesService',
  'AbilitiesService', 'DisciplineService', 'BackgroundsService', 'VirtuesService',
  'MeritFlawService', 'PathService', 'WillpowerService',
-function($http, CharCreatorService, ClanService, AttributesService,
+function($http, CharCreatorService, raceService, AttributesService,
    AbilitiesService, DisciplineService, BackgroundsService, VirtuesService,
    MeritFlawService, PathService, WillpowerService){
 
@@ -80,7 +80,7 @@ function($http, CharCreatorService, ClanService, AttributesService,
     doc.setFontSize(11);
 
     if(CharCreatorService.charName == null || CharCreatorService.charNature == null ||
-       ClanService.selectedClan.name == null || CharCreatorService.charPlayer == null ||
+       raceService.selectedrace.name == null || CharCreatorService.charPlayer == null ||
        CharCreatorService.charDemeanor == null || CharCreatorService.charGeneration == null ||
        CharCreatorService.charChronicle == null || CharCreatorService.charConcept == null ||
        CharCreatorService.charSire == null){
@@ -90,7 +90,7 @@ function($http, CharCreatorService, ClanService, AttributesService,
 
     doc.text(32.9, 41.8, CharCreatorService.charName);
     doc.text(91.5, 41.8, CharCreatorService.charNature);
-    doc.text(144.7, 41.8, ClanService.selectedClan.name);
+    doc.text(144.7, 41.8, raceService.selectedrace.name);
     doc.text(34.1, 47.7, CharCreatorService.charPlayer);
     doc.text(97.2, 47.7, CharCreatorService.charDemeanor);
     doc.text(155.8, 47.7, CharCreatorService.charGeneration);
@@ -146,9 +146,9 @@ function($http, CharCreatorService, ClanService, AttributesService,
 
     var discPosition = 59.74;
     var discHeight = 165.8;
-    for(var i = 0; i < Object.keys(DisciplineService.selectedClanDisciplines).length; i++){
-      doc.text(24.7, discHeight+1, Object.values(DisciplineService.selectedClanDisciplines)[i].name);
-      this.drawPoints(Object.values(DisciplineService.selectedClanDisciplines)[i], discPosition, discHeight, doc);
+    for(var i = 0; i < Object.keys(DisciplineService.selectedraceDisciplines).length; i++){
+      doc.text(24.7, discHeight+1, Object.values(DisciplineService.selectedraceDisciplines)[i].name);
+      this.drawPoints(Object.values(DisciplineService.selectedraceDisciplines)[i], discPosition, discHeight, doc);
       discHeight += 4.7;
     }
 
@@ -206,7 +206,7 @@ function($http, CharCreatorService, ClanService, AttributesService,
     doc.setFontSize(11);
 
     if(CharCreatorService.charName == null || CharCreatorService.charNature == null ||
-       ClanService.selectedClan.name == null || CharCreatorService.charPlayer == null ||
+       raceService.selectedrace.name == null || CharCreatorService.charPlayer == null ||
        CharCreatorService.charDemeanor == null || CharCreatorService.charGeneration == null ||
        CharCreatorService.charChronicle == null || CharCreatorService.charConcept == null ||
        CharCreatorService.charSire == null){
@@ -228,12 +228,12 @@ function($http, CharCreatorService, ClanService, AttributesService,
     charNature.DA = null;
     doc.addField(charNature);
 
-    var charClan = new TextField();
-    charClan.Rect = [144.7, 37.8, 43, 6];
-    charClan.V = ClanService.selectedClan.name;
-    charClan.T = 'CharClan';
-    charClan.DA = null;
-    doc.addField(charClan);
+    var charrace = new TextField();
+    charrace.Rect = [144.7, 37.8, 43, 6];
+    charrace.V = raceService.selectedrace.name;
+    charrace.T = 'Charrace';
+    charrace.DA = null;
+    doc.addField(charrace);
 
     var charPlayer = new TextField();
     charPlayer.Rect = [33.1, 44, 42, 6];
@@ -412,9 +412,9 @@ function($http, CharCreatorService, ClanService, AttributesService,
   function createDisciplinePoints(discNamePos, discNameHeight, discPtPos, discPtHeight, doc){
     var discPtList = [];
     var discNameList = [];
-    for(var i = 0; i < Object.keys(DisciplineService.selectedClanDisciplines).length; i++){
-      discPtList.push(Object.values(DisciplineService.selectedClanDisciplines)[i].points);
-      discNameList.push(Object.values(DisciplineService.selectedClanDisciplines)[i].name);
+    for(var i = 0; i < Object.keys(DisciplineService.selectedraceDisciplines).length; i++){
+      discPtList.push(Object.values(DisciplineService.selectedraceDisciplines)[i].points);
+      discNameList.push(Object.values(DisciplineService.selectedraceDisciplines)[i].name);
     }
     var discHeight = discPtHeight;
     for(var j = 0; j < 6; j++){

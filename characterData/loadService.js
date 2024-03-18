@@ -1,9 +1,9 @@
 var app = angular.module("site");
 
 app.service("LoadService",
-['CharCreatorService', 'AttributesService', 'AbilitiesService', 'ClanService', 'BackgroundsService', 'LoginService',
+['CharCreatorService', 'AttributesService', 'AbilitiesService', 'raceService', 'BackgroundsService', 'LoginService',
  'DisciplineService', 'VirtuesService', 'PathService', 'WillpowerService', 'MeritFlawService', 'SaveService', '$rootScope',
-  function(CharCreatorService, AttributeService, AbilitiesService, ClanService, BackgroundsService, LoginService,
+  function(CharCreatorService, AttributeService, AbilitiesService, raceService, BackgroundsService, LoginService,
            DisciplineService, VirtuesService, PathService, WillpowerService, MeritFlawService, SaveService, $rootScope){
 
   this.userCharacters = {};
@@ -164,8 +164,8 @@ app.service("LoadService",
    this.mapDisciplines = mapDisciplines;
    function mapDisciplines(character){
      DisciplineService.disciplinePts = character.disciplinePts;
-     for(var discipline in DisciplineService.selectedClanDisciplines){
-       delete DisciplineService.selectedClanDisciplines[discipline];
+     for(var discipline in DisciplineService.selectedraceDisciplines){
+       delete DisciplineService.selectedraceDisciplines[discipline];
      }
      for(var discipline in character.disciplines){
        this.loadDiscipline(character.disciplines[discipline]);
@@ -221,9 +221,9 @@ app.service("LoadService",
     if(character.freebieSpent == null) //Error checking that freebieSpent update.
       CharCreatorService.freebieSpent = ((15 + character.addedFlawPts) - character.freebiePts);
     CharCreatorService.freebieMode = character.freebieMode;
-    var clanIndex = ClanService.clanList.map(function(clan){
-      return clan.name;
-    }).indexOf(character.clan);
-    ClanService.selectedClan = ClanService.clanList[clanIndex];
+    var raceIndex = raceService.raceList.map(function(race){
+      return race.name;
+    }).indexOf(character.race);
+    raceService.selectedrace = raceService.raceList[raceIndex];
   };
 }]);

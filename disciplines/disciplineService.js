@@ -1,16 +1,16 @@
 var app = angular.module("site");
 
-app.service("DisciplineService", ['ClanService', 'CharCreatorService', 'UglyService',
- function(ClanService, CharCreatorService, UglyService){
+app.service("DisciplineService", ['raceService', 'CharCreatorService', 'UglyService',
+ function(raceService, CharCreatorService, UglyService){
 
   this.loadedCharacter = false;
   this.freeDisciplinePt = freeDisciplinePt;
-  this.setClan = setClan;
-  this.setClanDisciplines = setClanDisciplines;
+  this.setrace = setrace;
+  this.setraceDisciplines = setraceDisciplines;
   this.selectDisciplinePt = selectDisciplinePt;
   this.changeDiscipline = changeDiscipline;
   this.isGargoyle = isGargoyle;
-  this.selectedClan = ClanService.selectedClan;
+  this.selectedrace = raceService.selectedrace;
   this.disciplinePts = 3;
 
   this.getFreebieMode = getFreebieMode;
@@ -25,10 +25,10 @@ app.service("DisciplineService", ['ClanService', 'CharCreatorService', 'UglyServ
                          "Thaumaturgy", "Valeren", "Vicissitude", "Visceratika"];
 
   function changeDiscipline(discipline, index, prevDisc){
-     this.selectedClanDisciplines[index] = new Discipline(discipline);
-     for(var i = 0; i < Object.values(this.selectedClanDisciplines).length; i++){
-       if(this.selectedClanDisciplines[i].name == this.selectedClanDisciplines[index].name && i != index){
-         this.selectedClanDisciplines[index].name = "";
+     this.selectedraceDisciplines[index] = new Discipline(discipline);
+     for(var i = 0; i < Object.values(this.selectedraceDisciplines).length; i++){
+       if(this.selectedraceDisciplines[i].name == this.selectedraceDisciplines[index].name && i != index){
+         this.selectedraceDisciplines[index].name = "";
        }
      }
      for(var i = 0; i < prevDisc.points.length; i++){
@@ -45,9 +45,9 @@ app.service("DisciplineService", ['ClanService', 'CharCreatorService', 'UglyServ
   };
 
   function isGargoyle(){
-    if(UglyService.isGargoyle() && this.selectedClanDisciplines[0].pointCount == 0){
-      this.selectedClanDisciplines[0].select(0, "original");
-      this.selectedClanDisciplines[0].pointCount = 1;
+    if(UglyService.isGargoyle() && this.selectedraceDisciplines[0].pointCount == 0){
+      this.selectedraceDisciplines[0].select(0, "original");
+      this.selectedraceDisciplines[0].pointCount = 1;
     }
       return false;
   }
@@ -122,15 +122,15 @@ app.service("DisciplineService", ['ClanService', 'CharCreatorService', 'UglyServ
     discipline.select(index, "original");
   };
 
-  function setClan(clan){
-    this.selectedClan = clan;
+  function setrace(race){
+    this.selectedrace = race;
     this.disciplinePts = 3;
-    var newDisciplines = setClanDisciplines(clan.name);
-    if(newDisciplines.length < this.selectedClanDisciplines.length){
-      var diff = newDisciplines.length - this.selectedClanDisciplines.length;
-      this.selectedClanDisciplines.splice(0, newDisciplines.length);
+    var newDisciplines = setraceDisciplines(race.name);
+    if(newDisciplines.length < this.selectedraceDisciplines.length){
+      var diff = newDisciplines.length - this.selectedraceDisciplines.length;
+      this.selectedraceDisciplines.splice(0, newDisciplines.length);
     }
-    angular.extend(this.selectedClanDisciplines, newDisciplines);
+    angular.extend(this.selectedraceDisciplines, newDisciplines);
   };
 
   var self = this;
@@ -206,55 +206,55 @@ app.service("DisciplineService", ['ClanService', 'CharCreatorService', 'UglyServ
   };
 
   var service = this;
-  this.selectedClanDisciplines = setClanDisciplines();
+  this.selectedraceDisciplines = setraceDisciplines();
 
-  function setClanDisciplines(clan){
-    if(service.selectedClanDisciplines){
+  function setraceDisciplines(race){
+    if(service.selectedraceDisciplines){
       var ptsToReset = 0;
-      for(var discipline in service.selectedClanDisciplines){
-        delete service.selectedClanDisciplines[discipline];
+      for(var discipline in service.selectedraceDisciplines){
+        delete service.selectedraceDisciplines[discipline];
       }
       if(CharCreatorService.freebieMode)
         CharCreatorService.changeFreebiePts(ptsToReset);
       else
         service.disciplinePts+=ptsToReset;
     }
-    var clanDisciplines = {};
-    if(clan == "Children of Osiris"){
-      clanDisciplines = {0: new Discipline("Bardo"), 1: new Discipline(""), 2: new Discipline("")};
+    var raceDisciplines = {};
+    if(race == "Children of Osiris"){
+      raceDisciplines = {0: new Discipline("Bardo"), 1: new Discipline(""), 2: new Discipline("")};
     }
-    else if(clan == "Caitiff"){
-      clanDisciplines = {0: new Discipline(""), 1: new Discipline(""), 2: new Discipline("")};
+    else if(race == "Caitiff"){
+      raceDisciplines = {0: new Discipline(""), 1: new Discipline(""), 2: new Discipline("")};
     }
     else{
-      for(var i = 0; i < service.selectedClan.disciplines.length; i++){
-        clanDisciplines[i] = new Discipline(service.selectedClan.disciplines[i]);
+      for(var i = 0; i < service.selectedrace.disciplines.length; i++){
+        raceDisciplines[i] = new Discipline(service.selectedrace.disciplines[i]);
       }
     }
-    return clanDisciplines;
+    return raceDisciplines;
   };
 
   this.addDiscipline = addDiscipline;
   function addDiscipline(name = "", pointCount = 0, points = []){
-    var index = Object.keys(this.selectedClanDisciplines).length;
+    var index = Object.keys(this.selectedraceDisciplines).length;
     if(name == "")
-      this.selectedClanDisciplines[index] = new Discipline("");
+      this.selectedraceDisciplines[index] = new Discipline("");
     else{
-      this.selectedClanDisciplines[index] = new Discipline(name);
-      this.selectedClanDisciplines[index].pointCount = pointCount;
-      this.selectedClanDisciplines[index].points = points;
+      this.selectedraceDisciplines[index] = new Discipline(name);
+      this.selectedraceDisciplines[index].pointCount = pointCount;
+      this.selectedraceDisciplines[index].points = points;
     }
   };
 
   this.removeDiscipline = removeDiscipline;
   function removeDiscipline(index){
-    this.selectedClanDisciplines[index].reset();
-    delete this.selectedClanDisciplines[index];
+    this.selectedraceDisciplines[index].reset();
+    delete this.selectedraceDisciplines[index];
   };
 
   this.resetDisciplines = resetDisciplines;
   function resetDisciplines(){
-    this.selectedClanDisciplines = this.setClanDisciplines();
+    this.selectedraceDisciplines = this.setraceDisciplines();
     this.disciplinePts = 3;
   }
 

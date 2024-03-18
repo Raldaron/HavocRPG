@@ -1,9 +1,9 @@
 var app = angular.module("site");
 
 app.service("SaveService",
- ['CharCreatorService', 'LoginService', 'AttributesService', 'AbilitiesService', 'BackgroundsService', 'ClanService',
+ ['CharCreatorService', 'LoginService', 'AttributesService', 'AbilitiesService', 'BackgroundsService', 'raceService',
   'DisciplineService', 'VirtuesService', 'PathService', 'WillpowerService', 'MeritFlawService', '$rootScope',
-  function(CharCreatorService, LoginService, AttributeService, AbilitiesService, BackgroundsService, ClanService,
+  function(CharCreatorService, LoginService, AttributeService, AbilitiesService, BackgroundsService, raceService,
            DisciplineService, VirtuesService, PathService, WillpowerService, MeritFlawService, $rootScope){
 
     this.saveName;
@@ -29,7 +29,7 @@ app.service("SaveService",
       var supernaturalFlaws = {};
       angular.copy(AbilitiesService.abilitiesList, abilities);
       angular.copy(AttributeService.attributesList, attributes);
-      angular.copy(DisciplineService.selectedClanDisciplines, disciplines);
+      angular.copy(DisciplineService.selectedraceDisciplines, disciplines);
       angular.copy(BackgroundsService.selectedList, backgrounds);
       angular.copy(VirtuesService.virtueList, virtues);
       angular.copy(PathService.selectedPath, path);
@@ -83,7 +83,7 @@ app.service("SaveService",
         abilitySecondary: AbilitiesService.secondaryPts,
         abilityTertiary: AbilitiesService.tertiaryPts,
         abilities: abilities,
-        clan: ClanService.selectedClan.name,
+        race: raceService.selectedrace.name,
         disciplines: disciplines,
         disciplinePts: DisciplineService.disciplinePts,
         backgrounds: backgrounds,

@@ -45,20 +45,20 @@
         </div>
       </div>
       <br />
-      <div ng-controller="ClanController as clanCtrl">
+      <div ng-controller="raceController as raceCtrl">
         <div class="row">
-          <label for="clanFilter" style="margin-right: 30px;">Clan Filter: </label>
-          <select id="clanFilter" ng-model="clanCtrl.selectedClanFilter" ng-options="filter for filter in clanCtrl.clanFilters"
-                  ng-change="clanCtrl.filterClans(clanCtrl.selectedClanFilter)">
+          <label for="raceFilter" style="margin-right: 30px;">race Filter: </label>
+          <select id="raceFilter" ng-model="raceCtrl.selectedraceFilter" ng-options="filter for filter in raceCtrl.raceFilters"
+                  ng-change="raceCtrl.filterraces(raceCtrl.selectedraceFilter)">
           </select>
         </div>
         <div class="row">
-          <label for="clanSelect">Clan/Bloodline: </label>
-          <select id="clanSelect" ng-model="clanCtrl.selectedClan" ng-options="clan.name for clan in clanCtrl.filteredClanList"
-                  ng-change="setUClan(clanCtrl.selectedClan)" ng-blur="clanCtrl.setClan(clanCtrl.selectedClan)">
+          <label for="raceSelect">race/Bloodline: </label>
+          <select id="raceSelect" ng-model="raceCtrl.selectedrace" ng-options="race.name for race in raceCtrl.filteredraceList"
+                  ng-change="setUrace(raceCtrl.selectedrace)" ng-blur="raceCtrl.setrace(raceCtrl.selectedrace)">
           </select>
         </div>
-      <ng-include ng-show="clanCtrl.selectedClan.name!='N/A' || clanCtrl.selectedBloodline!=null" src="clanCtrl.clanPage"></ng-include>
+      <ng-include ng-show="raceCtrl.selectedrace.name!='N/A' || raceCtrl.selectedBloodline!=null" src="raceCtrl.racePage"></ng-include>
     </div>
     </div>
     <div ng-controller="AttributesController as attrCtrl">

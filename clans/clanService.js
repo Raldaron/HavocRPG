@@ -1,17 +1,17 @@
 var app = angular.module("site");
 
-app.service("ClanService", function(){
+app.service("raceService", function(){
 
-  this.filterClans = filterClans;
+  this.filterraces = filterraces;
 
-  this.clanFilters =
+  this.raceFilters =
   [
-    "All", "Thirteen", "Camarilla", "Sabbat", "Independent", "All Clans",
-    "All Bloodlines", "Camarilla (clans only)", "Sabbat (clans only)",
-    "Dark Ages", "High Clans", "Low Clans"
+    "All", "Thirteen", "Camarilla", "Sabbat", "Independent", "All races",
+    "All Bloodlines", "Camarilla (races only)", "Sabbat (races only)",
+    "Dark Ages", "High races", "Low races"
   ];
 
-  this.clanList = [{
+  this.raceList = [{
       id: 0, name: "Ahrimanes",
       filters: ["Sabbat", "All Bloodlines", "Dark Ages"],
       disciplines: ["Animalism", "Potence", "Spiritus"]
@@ -23,8 +23,8 @@ app.service("ClanService", function(){
     },
     {
       id: 2, name: "Assamite",
-      filters: ["Thirteen", "Independent", "All Clans",
-        "Low Clans", "Dark Ages"
+      filters: ["Thirteen", "Independent", "All races",
+        "Low races", "Dark Ages"
       ],
       disciplines: ["Celerity", "Obfuscate", "Quietus"]
     },
@@ -40,23 +40,23 @@ app.service("ClanService", function(){
     },
     {
       id: 5, name: "Brujah",
-      filters: ["Thirteen", "Camarilla", "All Clans",
-                "Camarilla (clans only)", "High Clans", "Dark Ages"],
+      filters: ["Thirteen", "Camarilla", "All races",
+                "Camarilla (races only)", "High races", "Dark Ages"],
       disciplines: ["Celerity", "Potence", "Presence"]
     },
     {
       id: 6, name: "Caitiff",
-      filters: ["All Clans", "Dark Ages"],
+      filters: ["All races", "Dark Ages"],
       disciplines: []
     }, {
       id: 7, name: "Cappadocian",
-      filters: ["All Clans", "Dark Ages", "High Clans"],
+      filters: ["All races", "Dark Ages", "High races"],
       disciplines: ["Auspex", "Fortitude", "Necromancy"]
     },
     {
       id: 8, name: "Children of Osiris",
       filters: ["All Bloodlines", "Dark Ages"],
-      disciplines: ["Bardo", "2 other disciplines learned from original clan"]
+      disciplines: ["Bardo", "2 other disciplines learned from original race"]
     },
     {
       id: 9, name: "Daughters of Cacophony",
@@ -65,8 +65,8 @@ app.service("ClanService", function(){
     },
     {
       id: 10, name: "Followers of Set",
-      filters: ["Thirteen", "Independent", "All Clans", "Dark Ages",
-                "Low Clans"],
+      filters: ["Thirteen", "Independent", "All races", "Dark Ages",
+                "Low races"],
       disciplines: ["Obfuscate", "Presence", "Serpentis"]
     },
     {
@@ -76,13 +76,13 @@ app.service("ClanService", function(){
     },
     {
       id: 12, name: "Gangrel",
-      filters: ["Thirteen", "Independent", "All Clans", "Low Clans",
+      filters: ["Thirteen", "Independent", "All races", "Low races",
                 "Dark Ages"],
       disciplines: ["Animalism", "Fortitude", "Protean"]
     },
     {
       id: 13, name: "Giovanni",
-      filters: ["Thirteen", "Independent", "All Clans", "Dark Ages"],
+      filters: ["Thirteen", "Independent", "All races", "Dark Ages"],
       disciplines: ["Dominate", "Necromancy", "Potence"]
     },
     {
@@ -102,8 +102,8 @@ app.service("ClanService", function(){
     },
     {
       id: 17, name: "Lasombra",
-      filters: ["Thirteen", "Sabbat", "All Clans", "Sabbat (clans only)",
-                "Dark Ages", "High Clans"],
+      filters: ["Thirteen", "Sabbat", "All races", "Sabbat (races only)",
+                "Dark Ages", "High races"],
       disciplines: ["Dominate", "Obtenebration", "Potence"]
     },
     {
@@ -113,8 +113,8 @@ app.service("ClanService", function(){
     },
     {
       id: 19, name: "Malkavian",
-      filters: ["Thirteen", "Camarilla", "All Clans",
-                "Camarilla (clans only)", "Dark Ages", "Low Clans"],
+      filters: ["Thirteen", "Camarilla", "All races",
+                "Camarilla (races only)", "Dark Ages", "Low races"],
       disciplines: ["Auspex", "Dementation", "Obfuscate"]
     },
     {
@@ -129,24 +129,24 @@ app.service("ClanService", function(){
     },
     {
       id: 22, name: "Nosferatu",
-      filters: ["Thirteen", "Camarilla", "All Clans",
-                "Camarilla (clans only)", "Dark Ages", "Low Clans"],
+      filters: ["Thirteen", "Camarilla", "All races",
+                "Camarilla (races only)", "Dark Ages", "Low races"],
       disciplines: ["Animalism", "Obfuscate", "Potence"]
     },
     {
-      id: 23, name: "Old Clan Tzimisce",
-      filters: ["Dark Ages, High Clans"],
+      id: 23, name: "Old race Tzimisce",
+      filters: ["Dark Ages, High races"],
       disciplines: ["Animalism", "Auspex", "Dominate"]
     },
     {
       id: 24, name: "Ravnos",
-      filters: ["Thirteen", "Independent", "All Clans", "Dark Ages",
-                "Low Clans"],
+      filters: ["Thirteen", "Independent", "All races", "Dark Ages",
+                "Low races"],
       disciplines: ["Animalism", "Chimerstry", "Fortitude"]
     },
     {
       id: 25, name: "Salubri",
-      filters: ["Independent", "All Clans", "Dark Ages"],
+      filters: ["Independent", "All races", "Dark Ages"],
       disciplines: ["Auspex", "Fortitude", "Obeah", "Valeren"]
     },
     {
@@ -156,14 +156,14 @@ app.service("ClanService", function(){
     },
     {
       id: 27, name: "Toreador",
-      filters: ["Thirteen", "Camarilla", "All Clans",
-                "Camarilla (clans only)", "Dark Ages", "High Clans"],
+      filters: ["Thirteen", "Camarilla", "All races",
+                "Camarilla (races only)", "Dark Ages", "High races"],
       disciplines: ["Auspex", "Celerity", "Presence"]
     },
     {
       id: 28, name: "Tremere",
-      filters: ["Thirteen", "Camarilla", "All Clans",
-                "Camarilla (clans only)", "Dark Ages", "Low Clans"],
+      filters: ["Thirteen", "Camarilla", "All races",
+                "Camarilla (races only)", "Dark Ages", "Low races"],
       disciplines: ["Auspex", "Dominate", "Thaumaturgy"]
     },
     {
@@ -173,34 +173,34 @@ app.service("ClanService", function(){
     },
     {
       id: 30, name: "Tzimisce",
-      filters: ["Thirteen", "Sabbat", "All Clans", "Sabbat (clans only)",
-                "Dark Ages", "High Clans"],
+      filters: ["Thirteen", "Sabbat", "All races", "Sabbat (races only)",
+                "Dark Ages", "High races"],
       disciplines: ["Animalism", "Auspex", "Vicissitude"]
     },
     {
       id: 31, name: "Ventrue",
-      filters: ["Thirteen", "Camarilla", "All Clans",
-                "Camarilla (clans only)", "Dark Ages", "High Clans"],
+      filters: ["Thirteen", "Camarilla", "All races",
+                "Camarilla (races only)", "Dark Ages", "High races"],
       disciplines: ["Dominate", "Fortitude", "Presence"]
     }
   ];
 
-  this.filteredClanList = this.clanList;
-  this.selectedClan = this.filteredClanList[0];
-  this.selectedClanFilter = this.clanFilters[0];
+  this.filteredraceList = this.raceList;
+  this.selectedrace = this.filteredraceList[0];
+  this.selectedraceFilter = this.raceFilters[0];
 
-  function filterClans(filter) {
-    this.filteredClanList = [];
+  function filterraces(filter) {
+    this.filteredraceList = [];
     if (filter === 'All') {
-      this.filteredClanList = this.clanList;
-      return this.filteredClanList;
+      this.filteredraceList = this.raceList;
+      return this.filteredraceList;
     }
-    for(var i = 0; i<this.clanList.length; i++){
-      if(this.clanList[i].filters.includes(filter)){
-        this.filteredClanList.push(this.clanList[i]);
+    for(var i = 0; i<this.raceList.length; i++){
+      if(this.raceList[i].filters.includes(filter)){
+        this.filteredraceList.push(this.raceList[i]);
       }
     }
-    return this.filteredClanList;
+    return this.filteredraceList;
   };
 
 });

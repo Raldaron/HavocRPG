@@ -19,7 +19,7 @@ app.controller("AttributesController",
   this.priorityChange = priorityChange;
   this.selectAttribute = selectAttribute;
   this.getPriorityPts = getPriorityPts;
-  this.isUglyClan = isUglyClan;
+  this.isUglyrace = isUglyrace;
 
   this.attributePriorities = getAttributePriorities();
   function getAttributePriorities(){
@@ -92,8 +92,8 @@ app.controller("AttributesController",
     return AttributeService.attributeCategories;
   };
 
-  function isUglyClan(){
-    return AttributeService.isUglyClan();
+  function isUglyrace(){
+    return AttributeService.isUglyrace();
   };
 
   function getPriorityPts(index){

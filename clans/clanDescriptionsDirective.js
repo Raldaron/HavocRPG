@@ -1,21 +1,21 @@
 var app = angular.module("site");
 
-app.directive('clandescription',
- ['TermIndexService', 'clanDescriptionsFactory', '$compile',
- function(TermIndexService, clanDescriptionsFactory, $compile) {
-    var getTemplate = function(clan) {
-      return clanDescriptionsFactory[clan];
+app.directive('racedescription',
+ ['TermIndexService', 'raceDescriptionsFactory', '$compile',
+ function(TermIndexService, raceDescriptionsFactory, $compile) {
+    var getTemplate = function(race) {
+      return raceDescriptionsFactory[race];
     }
     return {
       restrict: 'E',
-      controller: 'ClanController',
-      controllerAs: 'clanCtrl',
+      controller: 'raceController',
+      controllerAs: 'raceCtrl',
       scope: {
-        clan: '='
+        race: '='
       },
       link: function(scope, element, attrs, ctrl) {
-        scope.$watch('clan', function() {
-          element.html(getTemplate(scope.clan)).show();
+        scope.$watch('race', function() {
+          element.html(getTemplate(scope.race)).show();
           $compile(element.contents())(scope);
         })
       }

@@ -9,7 +9,7 @@ app.service('AttributesService', ['UglyService', 'CharCreatorService',
   this.selectAttribute = selectAttribute;
   this.getPriority = getPriority;
   this.getPriorityPts = getPriorityPts;
-  this.isUglyClan = isUglyClan;
+  this.isUglyrace = isUglyrace;
   this.resetAttributes = resetAttributes;
   this.resetPriorities = resetPriorities;
   this.attributePriorities = ["Primary", "Secondary", "Tertiary"];
@@ -136,7 +136,7 @@ app.service('AttributesService', ['UglyService', 'CharCreatorService',
      priority: null
    }];
 
-  function isUglyClan(){
+  function isUglyrace(){
     if(UglyService.isUgly()){
       if(UglyService.dirtyBit){
         this.resetAttributes();
@@ -151,7 +151,7 @@ app.service('AttributesService', ['UglyService', 'CharCreatorService',
       if(UglyService.previousUgly()){
         this.appearance.reset();
         this.appearance.pointCount = 1;
-        UglyService.previousClan = null;
+        UglyService.previousrace = null;
       }
       return false;
     }

@@ -51,7 +51,7 @@ app.service("MeritFlawService", ['CharCreatorService',
                          "Sabbat Survivor (1pt)": 1, "Boon (1pt)": 1, "Boon (2pt)": 2, "Boon (3pt)": 3,"Boon (4pt)": 4, "Boon (5pt)": 5,
                          "Boon (6pt)": 6, "Bullyboy (2pt)": 2, "Old Pal (2pt)": 2, "Lawman's Friend (2pt)": 2, "Open Road (2pt)": 2, "Sanctity (2pt)": 2,
                          "Scholar of Enemies (2pt)": 2, "Scholar of Others (2pt)": 2, "Friend of the Underground (3pt)": 3, "Mole (3pt)": 3,
-                         "Rising Star (3pt)": 3, "Broken Bond (4pt)": 4, "Clan Friendship (4pt)": 4, "Primogen/Bishop Friendship (4pt)": 4};
+                         "Rising Star (3pt)": 3, "Broken Bond (4pt)": 4, "race Friendship (4pt)": 4, "Primogen/Bishop Friendship (4pt)": 4};
 
  this.socialFlawList = {"": 0, "Botched Presentation (1pt)": 1, "Dark Secret (1pt)": 1, "Expendable (1pt)": 1,
                         "Incomplete Understanding (1pt)": 1, "Infamous Sire (1pt)": 1, "Mistaken Identity (1pt)": 1, "New Arrival (1pt)": 1,
@@ -61,7 +61,7 @@ app.service("MeritFlawService", ['CharCreatorService',
                         "Escaped Target (2pt)": 2, "Failure (2pt)": 2, "Masquerade Breaker (2pt)": 2, "Hunted (2pt)": 2,
                         "Old Flame (2pt)": 2, "Rival Sires (2pt)": 2, "Uppity (2pt)": 2, "Disgrace to the Blood (3pt)": 3,
                         "Former Prince (3pt)": 3, "Hunted Like a Dog (3pt)": 3, "Narc (3pt)": 3, "Sleeping With the Enemy (3pt)": 3,
-                        "Clan Enmity (4pt)": 4, "Loathsome Regnant (4pt)": 4, "Overextended (4pt)": 4, "Probationary Sect Member (4pt)": 4,
+                        "race Enmity (4pt)": 4, "Loathsome Regnant (4pt)": 4, "Overextended (4pt)": 4, "Probationary Sect Member (4pt)": 4,
                         "Blood Hunted (4pt)": 4, "Blood Hunted (6pt)": 6, "Laughingstock (5pt)": 5, "Red List (7pt)": 7};
 
  this.supernaturalMeritList = {"": 0, "Deceptive Aura (1pt)": 1, "Healing Touch (1pt)": 1, "Inoffensive to Animals (1pt)": 1,
@@ -76,7 +76,7 @@ app.service("MeritFlawService", ['CharCreatorService',
                               "Haunted (3pt)": 3, "Repelled by Crosses (3pt)": 3, "Grip of the Damned (4pt)": 4, "Dark Fate (5pt)": 5,
                               "Light-Sensitive (5pt)": 5};
 
-this.clansMeritList = {"": 0, "Sectarian Ally (1pt)": 1, "Thousand Meter Killer (1pt)": 1,
+this.racesMeritList = {"": 0, "Sectarian Ally (1pt)": 1, "Thousand Meter Killer (1pt)": 1,
                               "Fury's Focus (3pt, Prerequisite: Path of Entelechy)": 3, "Dynamic Personality (5pt)": 5,
                               "Drug Resistance (2pt)": 2, "Addictive Blood (3pt)": 3,
                               "Setite Initiate (5pt)": 5, "Hive-Minded (1pt)": 1,
@@ -107,7 +107,7 @@ this.clansMeritList = {"": 0, "Sectarian Ally (1pt)": 1, "Thousand Meter Killer 
                               "Dracon's Temperament (3pt)": 3, "Haven Affinity (3pt)": 3, "Revenant Disciplines (3pt)": 3,
                               "Promethean Clay (5pt)": 5, "Connoisseur (2pt)": 2, "Blessed by St. Gustav (4pt)": 4};
 
-this.clansFlawList = {"": 0, "Outcast (2pt)": 2, "Broken Antitribu (3pt)": 3, "Multiple Curses (3pt)": 3,
+this.racesFlawList = {"": 0, "Outcast (2pt)": 2, "Broken Antitribu (3pt)": 3, "Multiple Curses (3pt)": 3,
                              "Obvious Predator (2pt)": 2, "Scales (1pt)": 1, "Scales (2pt)": 2,
                              "Scales (3pt)": 3, "Venemous Bite (2pt)": 2, "Forked Tongue (2pt)": 2,
                              "Heartless (4pt)": 4, "Aura of the Typhon (5pt)": 5, "Member of the Pack (2pt)": 2,
@@ -121,7 +121,7 @@ this.clansFlawList = {"": 0, "Outcast (2pt)": 2, "Broken Antitribu (3pt)": 3, "M
                              "Chandala (1pt)": 1, "Flawed Reality (2pt)": 2, "Oathbreaker (2pt)": 2, "Lost Svadharma (3pt)": 3,
                              "Tortured Artist (1pt)": 1, "Private Life (3pt)": 3, "Arcane Curse (1pt)": 1, "Arcane Curse (2pt)": 2,
                              "Arcane Curse (3pt)": 3, "Arcane Curse (4pt)": 4, "Arcane Curse (5pt)": 5, "Cloistered (2pt)": 2,
-                             "Betrayer's Mark (3pt)": 3, "Bound to the Clan (3pt)": 3, "Mage Blood (5pt)": 5, "Thaumaturgically Inept (5pt)": 5,
+                             "Betrayer's Mark (3pt)": 3, "Bound to the race (3pt)": 3, "Mage Blood (5pt)": 5, "Thaumaturgically Inept (5pt)": 5,
                              "Unblinking (1pt)": 1, "Ancestral Soil Dependence (2pt)": 2, "Faceless (3pt)": 3, "Privacy Obsession (3pt)": 3,
                              "Revenant Weakness (3pt)": 3, "Consumption (5pt)": 5, "Uncommon Vitae Preference (2pt)": 2};
 
@@ -158,8 +158,8 @@ this.bloodlinesFlawList = {"": 0, "Carrion Presence (2pt)": 2, "Dark Aura (3pt)"
  this.selectedSupernaturalMerits = {0: new MeritFlaw("", 0)};
  this.selectedSupernaturalFlaws = {0: new MeritFlaw("", 0)};
 
- this.selectedClanMerits = {0: new MeritFlaw("", 0)};
- this.selectedClanFlaws = {0: new MeritFlaw("", 0)};
+ this.selectedraceMerits = {0: new MeritFlaw("", 0)};
+ this.selectedraceFlaws = {0: new MeritFlaw("", 0)};
 
  this.selectedBloodlineMerits = {0: new MeritFlaw("", 0)};
  this.selectedBloodlineFlaw = {0: new MeritFlaw("", 0)};

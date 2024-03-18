@@ -10,7 +10,7 @@ app.directive('termindex',
         TermIndexService.setTerm(term);
       }
       $scope.osiris = false;
-      if($scope.term == "2 other disciplines learned from original clan"){
+      if($scope.term == "2 other disciplines learned from original race"){
         $scope.osiris = true;
       }
     },

@@ -133,7 +133,7 @@
   </div>
 </td>
   <td class="points-cell" style="width:245px;">
-    <div ng-disabled="attrCtrl.isUglyClan()" ng-repeat="attrPt in attrCtrl.appearance.points" style="display: inline-block;">
+    <div ng-disabled="attrCtrl.isUglyrace()" ng-repeat="attrPt in attrCtrl.appearance.points" style="display: inline-block;">
       <img class="attrimg" ng-src="{{attrPt.img}}" ng-click="attrCtrl.selectAttribute(attrCtrl.appearance, $index, 1)" ng-if="!attrCtrl.freeMode"/>
       <img class="attrimg" ng-src="{{attrPt.img}}" ng-click="attrCtrl.freeAttribute(attrCtrl.appearance, $index, 1)" ng-if="attrCtrl.freeMode"/>
     </div>

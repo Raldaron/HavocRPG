@@ -1,53 +1,53 @@
 var app = angular.module("site");
 
-app.controller("ClanController",
- ['$scope', 'UglyService', 'TermIndexService', 'ClanService', 'DisciplineService',
- function($scope, UglyService, TermIndexService, ClanService, DisciplineService) {
+app.controller("raceController",
+ ['$scope', 'UglyService', 'TermIndexService', 'raceService', 'DisciplineService',
+ function($scope, UglyService, TermIndexService, raceService, DisciplineService) {
 
-    this.clanPage = "./clans/clan.html";
-    this.filterClans = filterClans;
+    this.racePage = "./races/race.html";
+    this.filterraces = filterraces;
 
-    this.clanFilters = getClanFilters();
-    function getClanFilters(){
-      return ClanService.clanFilters;
+    this.raceFilters = getraceFilters();
+    function getraceFilters(){
+      return raceService.raceFilters;
     }
 
-    this.setClan = setClan;
-    function setClan(charClan){
-      ClanService.selectedClan = charClan;
+    this.setrace = setrace;
+    function setrace(charrace){
+      raceService.selectedrace = charrace;
     }
 
-    this.clanList = getClanList();
-    function getClanList(){
-      return ClanService.clanList;
+    this.raceList = getraceList();
+    function getraceList(){
+      return raceService.raceList;
     }
 
-    this.selectedClan = getSelectedClan();
-    function getSelectedClan(){
-      return ClanService.selectedClan;
+    this.selectedrace = getSelectedrace();
+    function getSelectedrace(){
+      return raceService.selectedrace;
     }
 
-    this.selectedClanFilter = getSelectedClanFilter();
-    function getSelectedClanFilter(){
-      return ClanService.selectedClanFilter;
+    this.selectedraceFilter = getSelectedraceFilter();
+    function getSelectedraceFilter(){
+      return raceService.selectedraceFilter;
     }
 
-    this.filteredClanList = getFilteredClanList();
-    function getFilteredClanList(){
-      return ClanService.filteredClanList;
+    this.filteredraceList = getFilteredraceList();
+    function getFilteredraceList(){
+      return raceService.filteredraceList;
     }
 
-    function filterClans(filter){
-      this.filteredClanList = ClanService.filterClans(filter);
-      this.selectedClan = this.filteredClanList[0];
+    function filterraces(filter){
+      this.filteredraceList = raceService.filterraces(filter);
+      this.selectedrace = this.filteredraceList[0];
     }
 
-    $scope.setUClan = setUClan;
-    this.setUClan = setUClan;
+    $scope.setUrace = setUrace;
+    this.setUrace = setUrace;
 
-    function setUClan(clan) {
-      UglyService.setClan(clan);
-      DisciplineService.setClan(clan);
+    function setUrace(race) {
+      UglyService.setrace(race);
+      DisciplineService.setrace(race);
     }
 
     $scope.setTerm = function(term) {
@@ -56,13 +56,13 @@ app.controller("ClanController",
 
     var self = this;
     $scope.$on('loadCharacter', function(){
-      self.selectedClan = ClanService.selectedClan;
+      self.selectedrace = raceService.selectedrace;
       $scope.$apply();
     });
 
-    //SHOULD RESET CLAN & DISCIPLINE SECTIONS
+    //SHOULD RESET race & DISCIPLINE SECTIONS
     $scope.$on('resetCharacter', function(){
-      self.setUClan(ClanService.clanList[0]);
+      self.setUrace(raceService.raceList[0]);
     })
 
   }

@@ -213,8 +213,8 @@ h2 {
 
 .level-bubble {
   /* Adjustments for bubble size */
-  width: 20px; /* Increase the width of the bubbles */
-  height: 20px; /* Increase the height of the bubbles */
+  width: 10px; /* Increase the width of the bubbles */
+  height: 10px; /* Increase the height of the bubbles */
   margin: 4px; /* Adjust space between bubbles */
 }
 
@@ -226,8 +226,8 @@ h2 {
 
 .level-bubble {
   /* Increase the size of bubbles if needed */
-  width: 15px; /* Size of the bubble */
-  height: 15px; /* Size of the bubble */
+  width: 10px; /* Size of the bubble */
+  height: 10px; /* Size of the bubble */
   /* Other styles remain the same */
   border-radius: 50%; /* Makes the bubble round */
   background-color: #ccc; /* Unfilled color */

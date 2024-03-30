@@ -15,6 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.querySelector(".tablinks").click();
 });
+document
+  .getElementById("registerForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+    register();
+  });
 
 function populateRankingDropdowns() {
   // Get all ranking select elements

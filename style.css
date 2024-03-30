@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap");
+
+body,
+input,
+select,
+button {
+  font-family: "League Spartan", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #292b2c;
+  color: #ffffff;
+}
+
+/* Section title */
+h2 {
+  color: #d9534f; /* Title color */
+}
+
+/* Attributes section */
+.attribute {
+  background-color: #333538;
+  padding: 10px;
+  margin-bottom: 20px; /* Spacing between attribute groups */
+  border-radius: 5px;
+}
+
+.attribute h3 {
+  margin-bottom: 10px; /* Spacing below attribute name */
+  color: #d9534f; /* Attribute name color */
+}
+
+/* Trait names and scores on one line */
+.attribute > div:not(.attribute-ranking) {
+  display: flex;
+  flex-wrap: wrap; /* Wrap to next line if not enough space */
+}
+
+.attribute > div:not(.attribute-ranking) > span {
+  flex-basis: calc(
+    33.33% - 10px
+  ); /* Adjust width of each trait name and score */
+  text-align: center;
+  margin: 5px 0; /* Space between lines */
+}
+
+/* Style trait scores specifically */
+.trait-score {
+  display: inline-block; /* Align score inline with trait name */
+  margin: 0 5px; /* Space around scores */
+}
+
+/* Button container and styling */
+.attribute > div:not(.attribute-ranking) > button {
+  padding: 5px 10px; /* Button padding */
+  font-size: 0.85rem; /* Font size for buttons */
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px 2px; /* Margin around buttons */
+  flex-basis: calc(
+    16.66% - 10px
+  ); /* Half the width of trait and score, minus margin */
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 600px) {
+  .attribute > div:not(.attribute-ranking) {
+    flex-direction: column; /* Stack traits vertically on smaller screens */
+  }
+
+  .attribute > div:not(.attribute-ranking) > span,
+  .attribute > div:not(.attribute-ranking) > button {
+    flex-basis: 100%; /* Full width for smaller screens */
+  }
+
+  .attribute button {
+    margin: 5px auto; /* Center buttons with some margin */
+  }
+}
+
+.tabcontent {
+  display: flex;
+  flex-wrap: wrap; /* Allows for wrapping when the screen size is too small for two columns */
+  justify-content: space-between;
+}
+
+.skill-column {
+  display: flex; /* Ensures flex behavior within each column */
+  flex-direction: column;
+  width: 48%; /* Adjust as needed to fit two columns */
+}
+
+.skill {
+  display: flex; /* Use flex layout for skills */
+  flex-direction: column; /* Stack skill name and bubbles vertically */
+  margin-bottom: 10px; /* Spacing between each skill */
+}
+
+.skill > span {
+  white-space: nowrap; /* Prevent skill names from wrapping */
+  margin-bottom: 5px; /* Spacing between skill name and bubbles */
+}
+
+.levels {
+  display: flex; /* Aligns bubbles in a row */
+  flex-wrap: wrap; /* Allows bubbles to wrap */
+}
+
+.level-bubble {
+  width: 10px; /* Bubble size */
+  height: 10px; /* Bubble size */
+  border-radius: 50%; /* Makes the bubbles round */
+  background-color: #ccc; /* Unfilled bubble color */
+  margin-right: 2px; /* Spacing between bubbles horizontally */
+  margin-bottom: 2px; /* Spacing between bubbles when they wrap */
+}
+
+.level-bubble.filled {
+  background-color: #d9534f; /* Filled bubble color */
+}
+
+.skills-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill-column {
+  width: 50%; /* Increase this percentage to make each skill larger */
+  margin-bottom: 20px; /* Adjust if necessary for spacing between rows of skills */
+}
+
+.skill {
+  margin-bottom: 20px; /* Spacing between skills */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill > span {
+  white-space: nowrap; /* This prevents the skill names from wrapping */
+  /* Increase font size if you want the skill names to be larger */
+  font-size: 1.8rem;
+}
+
+.levels {
+  display: flex;
+  justify-content: start; /* Align bubbles to the start of the div */
+  flex-wrap: wrap; /* Allow bubbles to wrap to next line if needed */
+}
+
+.level-bubble {
+  /* Increase the size of bubbles if needed */
+  width: 20px; /* Size of the bubble */
+  height: 20px; /* Size of the bubble */
+  /* Other styles remain the same */
+  border-radius: 50%; /* Makes the bubble round */
+  background-color: #ccc; /* Unfilled color */
+  margin: 2px; /* Spacing between bubbles */
+}
+
+.level-bubble.filled {
+  background-color: #d9534f; /* Filled color */
+}

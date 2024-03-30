@@ -142,13 +142,12 @@ h2 {
   margin-bottom: 20px; /* Spacing between skills */
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .skill > span {
   white-space: nowrap; /* This prevents the skill names from wrapping */
   /* Increase font size if you want the skill names to be larger */
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .talents-container {
@@ -179,9 +178,9 @@ h2 {
 
 .level-bubble {
   /* Adjustments for bubble size */
-  width: 20px; /* Increase the width of the bubbles */
-  height: 20px; /* Increase the height of the bubbles */
-  margin: 4px; /* Adjust space between bubbles */
+  width: 15px; /* Increase the width of the bubbles */
+  height: 15px; /* Increase the height of the bubbles */
+  margin: 2px; /* Adjust space between bubbles */
 }
 
 .knowledges-container {

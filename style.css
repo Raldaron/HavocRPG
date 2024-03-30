@@ -72,7 +72,7 @@ h2 {
 }
 
 /* Responsive layout adjustments */
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   .attribute > div:not(.attribute-ranking) {
     flex-direction: column; /* Stack traits vertically on smaller screens */
   }
@@ -148,7 +148,75 @@ h2 {
 .skill > span {
   white-space: nowrap; /* This prevents the skill names from wrapping */
   /* Increase font size if you want the skill names to be larger */
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+}
+
+.talents-container {
+  display: flex;
+}
+
+.talent-column {
+  flex: 1; /* Assigns equal space for each column */
+  padding-right: 10px; /* Adjust space between columns */
+}
+
+.talent {
+  margin-bottom: 20px; /* Spacing between talent items */
+}
+
+.talent > span {
+  white-space: nowrap; /* This prevents the skill names from wrapping */
+  /* Increase font size if you want the skill names to be larger */
+  font-size: 1.5rem;
+}
+
+/* Add this to prevent flex items from wrapping or shrinking too much */
+.talent,
+.levels,
+.level-bubble {
+  flex-shrink: 0;
+}
+
+.level-bubble {
+  /* Adjustments for bubble size */
+  width: 20px; /* Increase the width of the bubbles */
+  height: 20px; /* Increase the height of the bubbles */
+  margin: 4px; /* Adjust space between bubbles */
+}
+
+.knowledges-container {
+  display: flex;
+}
+
+.knowledge-column {
+  flex: 1; /* Assigns equal space for each column */
+  padding-right: 10px; /* Adjust space between columns */
+}
+
+.knowledge {
+  margin-bottom: 20px; /* Spacing between knowledge items */
+}
+
+.knowledge > span {
+  white-space: wrap; /* This prevents the skill names from wrapping */
+  /* Increase font size if you want the skill names to be larger */
+  font-size: 1.2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Add this to prevent flex items from wrapping or shrinking too much */
+.knowledge,
+.levels,
+.level-bubble {
+  flex-shrink: 0;
+}
+
+.level-bubble {
+  /* Adjustments for bubble size */
+  width: 20px; /* Increase the width of the bubbles */
+  height: 20px; /* Increase the height of the bubbles */
+  margin: 4px; /* Adjust space between bubbles */
 }
 
 .levels {
@@ -159,8 +227,8 @@ h2 {
 
 .level-bubble {
   /* Increase the size of bubbles if needed */
-  width: 20px; /* Size of the bubble */
-  height: 20px; /* Size of the bubble */
+  width: 15px; /* Size of the bubble */
+  height: 15px; /* Size of the bubble */
   /* Other styles remain the same */
   border-radius: 50%; /* Makes the bubble round */
   background-color: #ccc; /* Unfilled color */

@@ -10,389 +10,441 @@
 </head>
 
 <body>
+  <div class="navbar-sm">
+    <!-- ... existing navbar ... -->
+  </div>
+
+  <!-- Login Section -->
   <div class="container">
-    <section class="biographical-info">
-      <h2>Biographical Info</h2>
-      <div class="row">
-        <div class="column">
-          <label for="characterName">Character's Name</label>
-          <input type="text" id="characterName" name="characterName">
-        </div>
-        <div class="column">
-          <label for="level">Level</label>
-          <select id="level" name="level">
-            <option value="">Select Level</option>
-            <!-- Levels 1-30 will be populated by JavaScript -->
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column full-width">
-          <label for="race">Race</label>
-          <select id="race" name="race">
-            <option value="">Select Race</option>
-            <!-- Races will be populated by JavaScript -->
-          </select>
-          <p id="raceDescription"></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column full-width">
-          <label for="class">Class</label>
-          <select id="class" name="class">
-            <option value="">Select Class</option>
-            <!-- Classes will be populated by JavaScript -->
-          </select>
-          <p id="classDescription"></p>
-        </div>
-      </div>
-    </section>
-
-    <h2>Attributes</h2>
-    <section class="attributes-and-ranking">
-      <!-- Physical Attributes -->
-      <div class="attribute" data-attribute="Physical">
-        <div class="attribute-ranking">
-          <label for="physicalRanking">Rank:</label>
-          <select id="physicalRanking" class="attribute-ranking-select">
-            <option value="">Select Rank</option>
-            <!-- Rank Options -->
-          </select>
-        </div>
-        <h3>Physical</h3>
-        <div class="trait-row">
-          <span class="trait-name">Strength: <span id="strength">0</span></span>
-          <span class="trait-name">Dexterity: <span id="dexterity">0</span></span>
-          <span class="trait-name">Stamina: <span id="stamina">0</span></span>
-        </div>
-        <div class="button-row">
-          <button class="increment" data-action="increment" data-trait="strength">+</button>
-          <button class="decrement" data-action="decrement" data-trait="strength">-</button>
-          <button class="increment" data-action="increment" data-trait="dexterity">+</button>
-          <button class="decrement" data-action="decrement" data-trait="dexterity">-</button>
-          <button class="increment" data-action="increment" data-trait="stamina">+</button>
-          <button class="decrement" data-action="decrement" data-trait="stamina">-</button>
-        </div>
-      </div>
-
-      <!-- Social Attributes -->
-      <div class="attribute" data-attribute="Social">
-        <div class="attribute-ranking">
-          <label for="socialRanking">Rank:</label>
-          <select id="socialRanking" class="attribute-ranking-select">
-            <option value="">Select Rank</option>
-            <!-- Rank Options -->
-          </select>
-        </div>
-        <h3>Social</h3>
-        <div class="trait-row">
-          <span class="trait-name">Charisma: <span id="charisma">0</span></span>
-          <span class="trait-name">Manipulation: <span id="manipulation">0</span></span>
-          <span class="trait-name">Appearance: <span id="appearance">0</span></span>
-        </div>
-        <div class="button-row">
-          <button class="increment" data-action="increment" data-trait="charisma">+</button>
-          <button class="decrement" data-action="decrement" data-trait="charisma">-</button>
-          <button class="increment" data-action="increment" data-trait="manipulation">+</button>
-          <button class="decrement" data-action="decrement" data-trait="manipulation">-</button>
-          <button class="increment" data-action="increment" data-trait="appearance">+</button>
-          <button class="decrement" data-action="decrement" data-trait="appearance">-</button>
-        </div>
-      </div>
-
-      <!-- Mental Attributes -->
-      <div class="attribute" data-attribute="Mental">
-        <div class="attribute-ranking">
-          <label for="mentalRanking">Rank:</label>
-          <select id="mentalRanking" class="attribute-ranking-select">
-            <option value="">Select Rank</option>
-            <!-- Rank Options -->
-          </select>
-        </div>
-        <h3>Mental</h3>
-        <div class="trait-row">
-          <span class="trait-name">Perception: <span id="perception">0</span></span>
-          <span class="trait-name">Intelligence: <span id="intelligence">0</span></span>
-          <span class="trait-name">Wit: <span id="wit">0</span></span>
-        </div>
-        <div class="button-row">
-          <button class="increment" data-action="increment" data-trait="perception">+</button>
-          <button class="decrement" data-action="decrement" data-trait="perception">-</button>
-          <button class="increment" data-action="increment" data-trait="intelligence">+</button>
-          <button class="decrement" data-action="decrement" data-trait="intelligence">-</button>
-          <button class="increment" data-action="increment" data-trait="wit">+</button>
-          <button class="decrement" data-action="decrement" data-trait="wit">-</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Talents, Skills, and Knowledges Section -->
-    <!-- This section will automatically follow the Attributes section in the flow of your HTML document -->
-    <div class="tab">
-      <button class="tablinks" onclick="openCategory(event, 'Talents')">Talents</button>
-      <button class="tablinks" onclick="openCategory(event, 'Skills')">Skills</button>
-      <button class="tablinks" onclick="openCategory(event, 'Knowledges')">Knowledges</button>
+    <div class="registration-container">
+      <h2>Registration</h2>
+      <form id="registrationForm">
+        <input type="email" id="registerEmail" placeholder="Email Address" required />
+        <input type="password" id="registerPassword" placeholder="Password" required />
+        <button type="submit" id="registerButton">Register</button>
+      </form>
     </div>
-    <div id="Talents" class="tabcontent">
-      <h3>Talents</h3>
-      <!-- Talents details -->
-      <div class="talents-container">
-        <div class="talent-column">
-          <div class="talent">
-            <span>Alertness:</span>
-            <div class="levels">
-              <!-- Generate 10 bubbles for each talent -->
-              <!-- Using data-level to track which level each bubble represents -->
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Animal Ken:</span>
-            <div class="levels">
-              <!-- Generate 10 bubbles for each talent -->
-              <!-- Using data-level to track which level each bubble represents -->
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Awareness:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Empathy:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Etiquette:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Expression:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Insight:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Intimidation:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
+    <div class="login-section">
+      <div ng-controller="LoginController as loginCtrl">
+        <div ng-hide="loginCtrl.loggedIn">
+          <form class="login-form" ng-submit="loginCtrl.login()">
+            <input type="email" ng-model="loginCtrl.email" placeholder="Email Address" required />
+            <input type="password" ng-model="loginCtrl.password" placeholder="Password" required />
+            <button type="submit">Sign in</button>
+          </form>
         </div>
-        <div class="talents-column">
-          <div class="talent">
-            <span>Leadership:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Performance:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Persuasion:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Pugilism:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Sense Deception:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Streetwise:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Subterfuge:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="talent">
-            <span>Violent Geek:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
+        <div ng-show="loginCtrl.loggedIn">
         </div>
       </div>
     </div>
-    <div id="Skills" class="tabcontent">
-      <h3>Skills</h3>
-      <div class="skills-container">
-        <div class="skill-column">
+  </div>
+  <div class="container-fluid main-content">
+    <div ng-controller="TermIndexController as tindexCtrl">
+      <div ng-view></div>
+    </div>
+  </div>
+</body>
+<div class="container">
+  <section class="biographical-info">
+    <h2>Biographical Info</h2>
+    <div class="row">
+      <div class="column">
+        <label for="characterName">Character's Name</label>
+        <input type="text" id="characterName" name="characterName">
+      </div>
+      <div class="column">
+        <label for="level">Level</label>
+        <select id="level" name="level">
+          <option value="">Select Level</option>
+          <!-- Levels 1-30 will be populated by JavaScript -->
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column full-width">
+        <label for="race">Race</label>
+        <select id="race" name="race">
+          <option value="">Select Race</option>
+          <!-- Races will be populated by JavaScript -->
+        </select>
+        <p id="raceDescription"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column full-width">
+        <label for="class">Class</label>
+        <select id="class" name="class">
+          <option value="">Select Class</option>
+          <!-- Classes will be populated by JavaScript -->
+        </select>
+        <p id="classDescription"></p>
+      </div>
+    </div>
+  </section>
+
+  <h2>Attributes</h2>
+  <section class="attributes-and-ranking">
+    <!-- Physical Attributes -->
+    <div class="attribute" data-attribute="Physical">
+      <div class="attribute-ranking">
+        <label for="physicalRanking">Rank:</label>
+        <select id="physicalRanking" class="attribute-ranking-select">
+          <option value="">Select Rank</option>
+          <!-- Rank Options -->
+        </select>
+      </div>
+      <h3>Physical</h3>
+      <div class="trait-row">
+        <span class="trait-name">Strength: <span id="strength">0</span></span>
+        <span class="trait-name">Dexterity: <span id="dexterity">0</span></span>
+        <span class="trait-name">Stamina: <span id="stamina">0</span></span>
+      </div>
+      <div class="button-row">
+        <button class="increment" data-action="increment" data-trait="strength">+</button>
+        <button class="decrement" data-action="decrement" data-trait="strength">-</button>
+        <button class="increment" data-action="increment" data-trait="dexterity">+</button>
+        <button class="decrement" data-action="decrement" data-trait="dexterity">-</button>
+        <button class="increment" data-action="increment" data-trait="stamina">+</button>
+        <button class="decrement" data-action="decrement" data-trait="stamina">-</button>
+      </div>
+    </div>
+
+    <!-- Social Attributes -->
+    <div class="attribute" data-attribute="Social">
+      <div class="attribute-ranking">
+        <label for="socialRanking">Rank:</label>
+        <select id="socialRanking" class="attribute-ranking-select">
+          <option value="">Select Rank</option>
+          <!-- Rank Options -->
+        </select>
+      </div>
+      <h3>Social</h3>
+      <div class="trait-row">
+        <span class="trait-name">Charisma: <span id="charisma">0</span></span>
+        <span class="trait-name">Manipulation: <span id="manipulation">0</span></span>
+        <span class="trait-name">Appearance: <span id="appearance">0</span></span>
+      </div>
+      <div class="button-row">
+        <button class="increment" data-action="increment" data-trait="charisma">+</button>
+        <button class="decrement" data-action="decrement" data-trait="charisma">-</button>
+        <button class="increment" data-action="increment" data-trait="manipulation">+</button>
+        <button class="decrement" data-action="decrement" data-trait="manipulation">-</button>
+        <button class="increment" data-action="increment" data-trait="appearance">+</button>
+        <button class="decrement" data-action="decrement" data-trait="appearance">-</button>
+      </div>
+    </div>
+
+    <!-- Mental Attributes -->
+    <div class="attribute" data-attribute="Mental">
+      <div class="attribute-ranking">
+        <label for="mentalRanking">Rank:</label>
+        <select id="mentalRanking" class="attribute-ranking-select">
+          <option value="">Select Rank</option>
+          <!-- Rank Options -->
+        </select>
+      </div>
+      <h3>Mental</h3>
+      <div class="trait-row">
+        <span class="trait-name">Perception: <span id="perception">0</span></span>
+        <span class="trait-name">Intelligence: <span id="intelligence">0</span></span>
+        <span class="trait-name">Wit: <span id="wit">0</span></span>
+      </div>
+      <div class="button-row">
+        <button class="increment" data-action="increment" data-trait="perception">+</button>
+        <button class="decrement" data-action="decrement" data-trait="perception">-</button>
+        <button class="increment" data-action="increment" data-trait="intelligence">+</button>
+        <button class="decrement" data-action="decrement" data-trait="intelligence">-</button>
+        <button class="increment" data-action="increment" data-trait="wit">+</button>
+        <button class="decrement" data-action="decrement" data-trait="wit">-</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Talents, Skills, and Knowledges Section -->
+  <!-- This section will automatically follow the Attributes section in the flow of your HTML document -->
+  <div class="tab">
+    <button class="tablinks" onclick="openCategory(event, 'Talents')">Talents</button>
+    <button class="tablinks" onclick="openCategory(event, 'Skills')">Skills</button>
+    <button class="tablinks" onclick="openCategory(event, 'Knowledges')">Knowledges</button>
+  </div>
+  <div id="Talents" class="tabcontent">
+    <h3>Talents</h3>
+    <!-- Talents details -->
+    <div class="talents-container">
+      <div class="talent-column">
+        <div class="talent">
+          <span>Alertness:</span>
+          <div class="levels">
+            <!-- Generate 10 bubbles for each talent -->
+            <!-- Using data-level to track which level each bubble represents -->
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Animal Ken:</span>
+          <div class="levels">
+            <!-- Generate 10 bubbles for each talent -->
+            <!-- Using data-level to track which level each bubble represents -->
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Awareness:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Empathy:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Etiquette:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Expression:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Insight:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Intimidation:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+      </div>
+      <div class="talents-column">
+        <div class="talent">
+          <span>Leadership:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Performance:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Persuasion:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Pugilism:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Sense Deception:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Streetwise:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Subterfuge:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="talent">
+          <span>Violent Geek:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="Skills" class="tabcontent">
+    <h3>Skills</h3>
+    <div class="skills-container">
+      <div class="skill-column">
+        <div class="skill">
+          <span>Archery:</span>
+          <div class="levels">
+            <!-- Generate 10 bubbles for each skill -->
+            <!-- Using data-level to track which level each bubble represents -->
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+          <br></br>
           <div class="skill">
-            <span>Archery:</span>
+            <span>Athletics:</span>
             <div class="levels">
               <!-- Generate 10 bubbles for each skill -->
               <!-- Using data-level to track which level each bubble represents -->
@@ -407,209 +459,9 @@
               <span class="level-bubble" data-level="9"></span>
               <span class="level-bubble" data-level="10"></span>
             </div>
-            <br></br>
-            <div class="skill">
-              <span>Athletics:</span>
-              <div class="levels">
-                <!-- Generate 10 bubbles for each skill -->
-                <!-- Using data-level to track which level each bubble represents -->
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Boating:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Brawl:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Carousing:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Climbing:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Crafts:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Disguise:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Dodge:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Drive:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Escape Artistry:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Firearms:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Instruction:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
-            <div class="skill">
-              <span>Larceny:</span>
-              <div class="levels">
-                <span class="level-bubble" data-level="1"></span>
-                <span class="level-bubble" data-level="2"></span>
-                <span class="level-bubble" data-level="3"></span>
-                <span class="level-bubble" data-level="4"></span>
-                <span class="level-bubble" data-level="5"></span>
-                <span class="level-bubble" data-level="6"></span>
-                <span class="level-bubble" data-level="7"></span>
-                <span class="level-bubble" data-level="8"></span>
-                <span class="level-bubble" data-level="9"></span>
-                <span class="level-bubble" data-level="10"></span>
-              </div>
-            </div>
           </div>
-        </div>
-        <div class="skills-column">
           <div class="skill">
-            <span>Melee:</span>
+            <span>Boating:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -624,7 +476,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Performance:</span>
+            <span>Brawl:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -639,7 +491,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Pilot:</span>
+            <span>Carousing:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -654,7 +506,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Read Lips:</span>
+            <span>Climbing:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -669,7 +521,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Ride:</span>
+            <span>Crafts:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -684,7 +536,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Sapper:</span>
+            <span>Disguise:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -699,7 +551,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Scrounging:</span>
+            <span>Dodge:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -714,7 +566,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Search:</span>
+            <span>Drive:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -729,7 +581,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Sleight of Hand:</span>
+            <span>Escape Artistry:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -744,7 +596,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Stealth:</span>
+            <span>Firearms:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -759,7 +611,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Survival:</span>
+            <span>Instruction:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -774,22 +626,7 @@
             </div>
           </div>
           <div class="skill">
-            <span>Swimming:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="skill">
-            <span>Tech Whisperer:</span>
+            <span>Larceny:</span>
             <div class="levels">
               <span class="level-bubble" data-level="1"></span>
               <span class="level-bubble" data-level="2"></span>
@@ -805,242 +642,439 @@
           </div>
         </div>
       </div>
-    </div>
-    <div id="Knowledges" class="tabcontent">
-      <h3>Knowledge</h3>
-      <!-- Knowledges details -->
-      <div class="knowledges-container">
-        <div class="knowledge-column">
-          <div class="knowledge">
-            <span>Dungeon Economics:</span>
-            <div class="levels">
-              <!-- Generate 10 bubbles for each knowledge -->
-              <!-- Using data-level to track which level each bubble represents -->
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="knowledge">
-            <span>Arcane Babble:</span>
-            <div class="levels">
-              <!-- Generate 10 bubbles for each knowledge -->
-              <!-- Using data-level to track which level each bubble represents -->
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="knowledge">
-            <span>Cryptid Social Studies:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="knowledge">
-            <span>Ruin Architecture:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="knowledge">
-            <span>Post-Apocalyptic Culinary Arts:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="knowledge">
-            <span>Mechanomancy:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="knowledge">
-            <span>Ancient Languages:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
-          </div>
-          <div class="knowledge">
-            <span>Potion Brewing 101:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
+      <div class="skills-column">
+        <div class="skill">
+          <span>Melee:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
           </div>
         </div>
-        <div class="knowledge-column">
-          <div class="knowledge">
-            <span>Trapology:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
+        <div class="skill">
+          <span>Performance:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
           </div>
-          <div class="knowledge">
-            <span>Magical Theory:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
+        </div>
+        <div class="skill">
+          <span>Pilot:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
           </div>
-          <div class="knowledge">
-            <span>Heretical Studies:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
+        </div>
+        <div class="skill">
+          <span>Read Lips:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
           </div>
-          <div class="knowledge">
-            <span>Interdimensional Law:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
+        </div>
+        <div class="skill">
+          <span>Ride:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
           </div>
-          <div class="knowledge">
-            <span>Monster Anatomy:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
+        </div>
+        <div class="skill">
+          <span>Sapper:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
           </div>
-          <div class="knowledge">
-            <span>Psychic Etiquette:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
+        </div>
+        <div class="skill">
+          <span>Scrounging:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
           </div>
-          <div class="knowledge">
-            <span>Technoarcane Integration:</span>
-            <div class="levels">
-              <span class="level-bubble" data-level="1"></span>
-              <span class="level-bubble" data-level="2"></span>
-              <span class="level-bubble" data-level="3"></span>
-              <span class="level-bubble" data-level="4"></span>
-              <span class="level-bubble" data-level="5"></span>
-              <span class="level-bubble" data-level="6"></span>
-              <span class="level-bubble" data-level="7"></span>
-              <span class="level-bubble" data-level="8"></span>
-              <span class="level-bubble" data-level="9"></span>
-              <span class="level-bubble" data-level="10"></span>
-            </div>
+        </div>
+        <div class="skill">
+          <span>Search:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="skill">
+          <span>Sleight of Hand:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="skill">
+          <span>Stealth:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="skill">
+          <span>Survival:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="skill">
+          <span>Swimming:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="skill">
+          <span>Tech Whisperer:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="Knowledges" class="tabcontent">
+    <h3>Knowledge</h3>
+    <!-- Knowledges details -->
+    <div class="knowledges-container">
+      <div class="knowledge-column">
+        <div class="knowledge">
+          <span>Dungeon Economics:</span>
+          <div class="levels">
+            <!-- Generate 10 bubbles for each knowledge -->
+            <!-- Using data-level to track which level each bubble represents -->
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Arcane Babble:</span>
+          <div class="levels">
+            <!-- Generate 10 bubbles for each knowledge -->
+            <!-- Using data-level to track which level each bubble represents -->
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Cryptid Social Studies:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Ruin Architecture:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Post-Apocalyptic Culinary Arts:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Mechanomancy:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Ancient Languages:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Potion Brewing 101:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+      </div>
+      <div class="knowledge-column">
+        <div class="knowledge">
+          <span>Trapology:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Magical Theory:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Heretical Studies:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Interdimensional Law:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Monster Anatomy:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Psychic Etiquette:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
+          </div>
+        </div>
+        <div class="knowledge">
+          <span>Technoarcane Integration:</span>
+          <div class="levels">
+            <span class="level-bubble" data-level="1"></span>
+            <span class="level-bubble" data-level="2"></span>
+            <span class="level-bubble" data-level="3"></span>
+            <span class="level-bubble" data-level="4"></span>
+            <span class="level-bubble" data-level="5"></span>
+            <span class="level-bubble" data-level="6"></span>
+            <span class="level-bubble" data-level="7"></span>
+            <span class="level-bubble" data-level="8"></span>
+            <span class="level-bubble" data-level="9"></span>
+            <span class="level-bubble" data-level="10"></span>
           </div>
         </div>
       </div>
@@ -1048,6 +1082,45 @@
   </div>
 
   <script src="script.js"></script>
-</body>
+  <!-----------firebase stuff-->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "your-api-key",
+      authDomain: "your-project-id.firebaseapp.com",
+      // The rest of your Firebase configuration
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    // Add registration function
+    const register = async () => {
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        // Registered user
+        console.log(userCredential);
+      } catch (error) {
+        console.error(error);
+        // Handle errors here
+      }
+    };
+    // Event listener for registration form
+    const registrationForm = document.getElementById('registrationForm');
+    registrationForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent the form from submitting the traditional way
+      register();
+    });
+  </script>
+  </body>
 
 </html>

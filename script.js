@@ -1,16 +1,3 @@
-// Initialize Firebase (Replace placeholders with your actual Firebase config)
-const firebaseConfig = {
-  apiKey: "AIzaSyCT4p4jTIvEA7oFPC2yX-B66678GA6Fgjc",
-  authDomain: "havocrpg-38997.firebaseapp.com",
-  projectId: "havocrpg-38997",
-  storageBucket: "havocrpg-38997.appspot.com",
-  messagingSenderId: "206422450636",
-  appId: "1:206422450636:web:1289e5deb3897d0ae47d69",
-  measurementId: "G-PHL64HMX3N"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
 document.addEventListener("DOMContentLoaded", () => {
   populateLevelDropdown();
   populateRacesDropdown();

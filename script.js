@@ -1,26 +1,126 @@
+// Initialize Firebase (Replace placeholders with your actual Firebase config)
+const firebaseConfig = {
+  apiKey: "AIzaSyCT4p4jTIvEA7oFPC2yX-B66678GA6Fgjc",
+  authDomain: "havocrpg-38997.firebaseapp.com",
+  projectId: "havocrpg-38997",
+  storageBucket: "havocrpg-38997.appspot.com",
+  messagingSenderId: "206422450636",
+  appId: "1:206422450636:web:1289e5deb3897d0ae47d69",
+  measurementId: "G-PHL64HMX3N"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 document.addEventListener("DOMContentLoaded", () => {
   populateLevelDropdown();
   populateRacesDropdown();
   populateClassesDropdown();
-  populateRankingDropdowns(); // Ensure this line is present
+  populateRankingDropdowns();
   initAttributeScoreListeners();
   initRankingChangeListeners();
-  document.querySelectorAll(".level-bubble").forEach((bubble) => {
-    bubble.addEventListener("click", function () {
-      // Toggle the 'filled' class to fill/unfill the bubble
+  document.querySelectorAll(".level-bubble").forEach(bubble => {
+    bubble.addEventListener("click", function() {
       this.classList.toggle("filled");
-
-      // Optional: Handle any logic when a bubble is filled or unfilled
     });
   });
   document.querySelector(".tablinks").click();
+  
+  // Delay Firebase-specific setup to ensure it doesn't interfere
+  setTimeout(initAuth, 500); // Adjust time as needed
 });
-document
-  .getElementById("registerForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    register();
+
+function initAuth() {
+  // User Registration
+  document.getElementById("registerButton").addEventListener("click", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("emailField").value;
+    const password = document.getElementById("passwordField").value;
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        alert("User registered successfully!");
+        console.log("User registered:", userCredential.user);
+      })
+      .catch((error) => {
+        alert("Error registering user:", error.message);
+        console.error("Error registering new user:", error);
+      });
   });
+
+  // User Login
+  document.getElementById("loginButton").addEventListener("click", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("emailField").value;
+    const password = document.getElementById("passwordField").value;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        alert("User logged in successfully!");
+        console.log("User logged in:", userCredential.user);
+        // Example: Load user's character sheet
+        loadCharacterSheet();
+      })
+      .catch((error) => {
+        alert("Error logging in:", error.message);
+        console.error("Error signing in:", error);
+      });
+  });
+
+  // Listen for auth state changes
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      console.log("User logged in: ", user);
+      // Optionally load user data or character sheet
+      loadCharacterSheet();
+    } else {
+      console.log("User logged out");
+    }
+  });
+}
+
+// Load user's character sheet
+function loadCharacterSheet() {
+  const user = firebase.auth().currentUser;
+  if (user) {
+    db.collection("characterSheets")
+      .doc(user.uid)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const characterData = doc.data();
+          console.log("Character Sheet Data:", characterData);
+          // Populate character sheet on the page with characterData
+          // Example: document.getElementById('characterName').value = characterData.name;
+        } else {
+          console.log("No character sheet found.");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }
+}
+
+// Function to save character sheet data
+// This should be called with the appropriate data when the character sheet is submitted
+function saveCharacterSheet(characterData) {
+  const user = firebase.auth().currentUser;
+  if (user) {
+    db.collection("characterSheets")
+      .doc(user.uid)
+      .set(characterData)
+      .then(() => {
+        console.log("Character sheet saved!");
+      })
+      .catch((error) => {
+        console.error("Error saving character sheet:", error);
+      });
+  } else {
+    console.log("User is not logged in");
+  }
+}
 
 function populateRankingDropdowns() {
   // Get all ranking select elements

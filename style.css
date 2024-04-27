@@ -1,251 +1,220 @@
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap");
-
+/* Base styles */
 body,
-input,
-select,
-button {
-  font-family: "League Spartan", sans-serif;
+html {
+  height: 100%;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  overflow: hidden; /* Hide overflow on the body to remove scrollbars */
+  font-family: "Libre Baskerville", serif;
+  background-color: #282a36;
+  color: #f8f8f2;
+  display: flex;
+  flex-direction: column; /* Stack sidebar and content on top of each other on mobile */
 }
 
-.container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  background-color: #292b2c;
-  color: #ffffff;
+/* Scrollbar styles for webkit browsers to make them thinner and less obtrusive */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
 }
 
-/* Section title */
-h2 {
-  color: #d9534f; /* Title color */
+::-webkit-scrollbar-thumb {
+  background: #6272a4;
+  border-radius: 2px;
 }
 
-/* Attributes section */
-.attribute {
-  background-color: #333538;
+/* Always show vertical scrollbar for sidebar and content to avoid layout shift */
+.sidebar,
+.content {
+  scrollbar-width: thin;
+  scrollbar-color: #6272a4 #44475a;
+}
+
+/* Sidebar styles for mobile */
+.sidebar {
+  background-color: #44475a;
+  width: 100%; /* Full width on small screens */
   padding: 10px;
-  margin-bottom: 20px; /* Spacing between attribute groups */
-  border-radius: 5px;
+  box-sizing: border-box;
+  overflow-y: auto; /* Allow vertical scrolling */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: thin; /* Firefox */
 }
 
-.attribute h3 {
-  margin-bottom: 10px; /* Spacing below attribute name */
-  color: #d9534f; /* Attribute name color */
+.sidebar h3 {
+  font-family: "League Spartan", sans-serif;
+  font-size: 0.9em; /* Smaller title font size */
 }
 
-/* Trait names and scores on one line */
-.attribute > div:not(.attribute-ranking) {
-  display: flex;
-  flex-wrap: wrap; /* Wrap to next line if not enough space */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.attribute > div:not(.attribute-ranking) > span {
-  flex-basis: calc(
-    33.33% - 10px
-  ); /* Adjust width of each trait name and score */
-  text-align: center;
-  margin: 5px 0; /* Space between lines */
-}
-
-/* Style trait scores specifically */
-.trait-score {
-  display: inline-block; /* Align score inline with trait name */
-  margin: 0 5px; /* Space around scores */
-}
-
-/* Button container and styling */
-.attribute > div:not(.attribute-ranking) > button {
-  padding: 5px 10px; /* Button padding */
-  font-size: 0.85rem; /* Font size for buttons */
-  background-color: #d9534f;
-  color: white;
-  border: none;
-  border-radius: 5px;
+.sidebar ul li {
   cursor: pointer;
-  margin: 5px 2px; /* Margin around buttons */
-  flex-basis: calc(
-    16.66% - 10px
-  ); /* Half the width of trait and score, minus margin */
+  padding: 8px; /* Smaller padding for list items */
+  font-size: 0.85em; /* Smaller font size for list items */
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin-bottom: 4px; /* Reduced space between items */
 }
 
-/* Responsive layout adjustments */
-@media (max-width: 400px) {
-  .attribute > div:not(.attribute-ranking) {
-    flex-direction: column; /* Stack traits vertically on smaller screens */
+/* ... other styles ... */
+
+@media (min-width: 361px) {
+  /* Styles for larger screens than 360px width */
+  body {
+    flex-direction: row; /* Layout sidebar and content side by side */
   }
 
-  .attribute > div:not(.attribute-ranking) > span,
-  .attribute > div:not(.attribute-ranking) > button {
-    flex-basis: 100%; /* Full width for smaller screens */
+  .sidebar {
+    width: 250px; /* Fixed sidebar width for larger screens */
+    height: 100vh; /* Set to full height of the viewport */
+    position: fixed; /* Fixed position to the side */
+    top: 0;
+    left: 0;
+    overflow-y: auto; /* Allow vertical scrolling */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-widt8: thin; /* Firefox */
+     padding-top: 80px;
   }
 
-  .attribute button {
-    margin: 5px auto; /* Center buttons with some margin */
+  .content {
+    padding-left: 20px; /* Adjust as needed */
+    margin-left: 250px; /* Add margin to not overlap the sidebar */
+    width: calc(100% - 250px); /* Adjust width considering sidebar */
+    height: 100vh; /* Set to full height of the viewport */
+    overflow-y: auto; /* Scrollable content */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: thin; /* Firefox */
+    line-height: 1.6; /* Adjust the line height as needed */
+}
+  .content p {
+  line-height: 1.9; /* Adjust the line height as needed */
+}
+
   }
 }
+/* ... existing CSS ... */ 
+/* Sidebar styles */
+.sidebar {
+  /* ... other styles ... */
+  transition: width 0.3s ease; /* Smooth transition for sidebar toggle */
+   z-index: 998;
+}
 
-.tabcontent {
+/* Style for when sidebar is collapsed */
+/* Sidebar toggle button style */
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: #f8f8f2;
+  font-size: 24px; /* Adjust size as needed */
+  cursor: pointer;
+  text-align: left;
+  padding: 10px;
+  margin-top: 10px; /* Adjust as needed */
+  display: block;
+  position: fixed; /* Fixed position to keep it always visible */
+  top: 10px; /* Adjust as needed */
+  left: 10px; /* Adjust as needed */
+  z-index: 999; /* Ensure it's above other content */
+}
+
+/* Collapsed sidebar styles */
+.sidebar.collapsed {
+  width: 0; /* Collapse the sidebar width */
+  padding: 0; /* Remove padding */
+  visibility: hidden; /* Hide sidebar */
+}
+
+/* Styles to handle the content area when sidebar is collapsed */
+.content.collapsed {
+  margin-left: 0; /* Remove margin when sidebar is collapsed */
+  padding-left: 60px;
+}
+
+/* Add transition to sidebar and content for smooth collapsing effect */
+.sidebar,
+.content {
+  transition: margin-left 0.3s, width 0.3s, padding 0.3s, visibility 0.3s;
+}
+
+/* Full-width style for content when sidebar is collapsed */
+.content.full-width {
+  margin-left: 0; /* Content should start from the left edge */
+}
+
+/* Hiding the scrollbar when it's not in use, for WebKit browsers */
+.sidebar::-webkit-scrollbar,
+.content::-webkit-scrollbar {
+  width: 0;
+  background: transparent; /* make scrollbar transparent */
+}
+.button-container {
   display: flex;
-  flex-wrap: wrap; /* Allows for wrapping when the screen size is too small for two columns */
-  justify-content: space-between;
+  justify-content: left;
+  margin-top: 10px; /* Adjust margin as needed */
 }
 
-.skill-column {
-  display: flex; /* Ensures flex behavior within each column */
-  flex-direction: column;
-  width: 48%; /* Adjust as needed to fit two columns */
+.yes-button,
+.no-button {
+  background-color: #6272a4;
+  color: #f8f8f2;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0 5px; /* Add some spacing between the buttons */
 }
 
-.skill {
-  display: flex; /* Use flex layout for skills */
-  flex-direction: column; /* Stack skill name and bubbles vertically */
-  margin-bottom: 10px; /* Spacing between each skill */
+.yes-button:hover,
+.no-button:hover {
+  background-color: #44475a;
+}
+.comments-toggle {
+  font-size: 24px; /* adjust size as needed */
+  cursor: pointer;
+  position: absolute; /* Position it near the section header */
+  right: 10px; /* Right align inside the content area */
+  top: 10px; /* Adjust vertical position */
+}
+/* ... other styles ... */
+.entry {
+    font-family: 'YourBodyFont', sans-serif; /* Replace 'YourBodyFont' with the actual font you are using for the body */
 }
 
-.skill > span {
-  white-space: nowrap; /* Prevent skill names from wrapping */
-  margin-bottom: 5px; /* Spacing between skill name and bubbles */
+.comment {
+    font-family: 'Bristol', cursive; /* Assuming 'Bristol' is available, replace with an available cursive font if needed */
+    font-size: 0.9em;
+    margin-left: 20px;
+    color: #555; /* Darker grey for comments */
 }
 
-.levels {
-  display: flex; /* Aligns bubbles in a row */
-  flex-wrap: wrap; /* Allows bubbles to wrap */
+.author {
+    display: block;
+    font-style: italic;
+    font-size: smaller;
+    color: #888; /* Light grey for author citation */
+}
+.entry {
+    font-family: "Libre Baskerville", serif;
+    text-align: left; /* Ensures entries are left-aligned */
 }
 
-.level-bubble {
-  width: 10px; /* Bubble size */
-  height: 10px; /* Bubble size */
-  border-radius: 50%; /* Makes the bubbles round */
-  background-color: #ccc; /* Unfilled bubble color */
-  margin-right: 2px; /* Spacing between bubbles horizontally */
-  margin-bottom: 2px; /* Spacing between bubbles when they wrap */
+.comment {
+    font-family: 'Bristol', cursive; /* Assuming 'Bristol' is available, replace with an available cursive font if needed */
+    font-size: 0.9em;
+    text-align: right; /* Right-aligns comments */
+    margin-right: 20px; /* Adds some space on the right if needed */
+    color: #ffff; /* Darker grey for comments */
 }
 
-.level-bubble.filled {
-  background-color: #d9534f; /* Filled bubble color */
+.author {
+    display: block;
+    font-style: italic;
+    color: #888; /* Light grey for author citation */
 }
 
-.skills-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.skill-column {
-  width: 50%; /* Increase this percentage to make each skill larger */
-  margin-bottom: 20px; /* Adjust if necessary for spacing between rows of skills */
-}
-
-.skill {
-  margin-bottom: 20px; /* Spacing between skills */
-  display: flex;
-  justify-content: space-between;
-}
-
-.skill > span {
-  white-space: nowrap; /* This prevents the skill names from wrapping */
-  /* Increase font size if you want the skill names to be larger */
-  font-size: 1.3rem;
-}
-
-.talents-container {
-  display: flex;
-}
-
-.talent-column {
-  flex: 1; /* Assigns equal space for each column */
-  padding-right: 10px; /* Adjust space between columns */
-}
-
-.talent {
-  margin-bottom: 20px; /* Spacing between talent items */
-}
-
-.talent > span {
-  white-space: nowrap; /* This prevents the skill names from wrapping */
-  /* Increase font size if you want the skill names to be larger */
-  font-size: 1.5rem;
-}
-
-/* Add this to prevent flex items from wrapping or shrinking too much */
-.talent,
-.levels,
-.level-bubble {
-  flex-shrink: 0;
-}
-
-.level-bubble {
-  /* Adjustments for bubble size */
-  width: 15px; /* Increase the width of the bubbles */
-  height: 15px; /* Increase the height of the bubbles */
-  margin: 2px; /* Adjust space between bubbles */
-}
-
-.knowledges-container {
-  display: flex;
-}
-
-.knowledge-column {
-  flex: 1; /* Assigns equal space for each column */
-  padding-right: 10px; /* Adjust space between columns */
-}
-
-.knowledge {
-  margin-bottom: 20px; /* Spacing between knowledge items */
-}
-
-.knowledge > span {
-  white-space: wrap; /* This prevents the skill names from wrapping */
-  /* Increase font size if you want the skill names to be larger */
-  font-size: 1.2rem;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Add this to prevent flex items from wrapping or shrinking too much */
-.knowledge,
-.levels,
-.level-bubble {
-  flex-shrink: 0;
-}
-
-.level-bubble {
-  /* Adjustments for bubble size */
-  width: 10px; /* Increase the width of the bubbles */
-  height: 10px; /* Increase the height of the bubbles */
-  margin: 4px; /* Adjust space between bubbles */
-}
-
-.levels {
-  display: flex;
-  justify-content: start; /* Align bubbles to the start of the div */
-  flex-wrap: wrap; /* Allow bubbles to wrap to next line if needed */
-}
-
-.level-bubble {
-  /* Increase the size of bubbles if needed */
-  width: 10px; /* Size of the bubble */
-  height: 10px; /* Size of the bubble */
-  /* Other styles remain the same */
-  border-radius: 50%; /* Makes the bubble round */
-  background-color: #ccc; /* Unfilled color */
-  margin: 2px; /* Spacing between bubbles */
-}
-
-.level-bubble.filled {
-  background-color: #d9534f; /* Filled color */
-}
-
-.login-section {
-  text-align: center; /* Center the login form */
-  padding: 10px; /* Add some padding */
-  background: #292b2c; /* Background color */
-  color: #fff; /* Text color */
-}
-
-.login-form input,
-.login-form button {
-  margin: 5px; /* Space out elements */
-}
